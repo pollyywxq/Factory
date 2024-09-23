@@ -1,5 +1,10 @@
-﻿public static class Program
+﻿using test;
+
+public static class Program
+
 {
+
+    private static List<Factory> _factories = new List<Factory>();
     private static void Terminal()
     {
         while (true)
@@ -51,7 +56,17 @@
 
     private static void CreateFactory()
     {
-        throw new NotImplementedException();
+        Console.Write("\n1. Enter electricity capability use per plan: ");
+        var planElectricity = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("2. Enter electricity capability use in fact: ");
+        var inFactElectricity = Convert.ToDouble(Console.ReadLine());
+
+        var newFactory = new Factory(_factories.Count + 1, planElectricity, inFactElectricity);
+
+        _factories.Add(newFactory);
+
+        Console.WriteLine("\nFactory has been successfully added!");
     }
 
     public static void Main()
