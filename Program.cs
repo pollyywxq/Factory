@@ -51,9 +51,26 @@ public static class Program
 
     private static void GetFactories()
     {
-        throw new NotImplementedException();
+        if (_factories.Count == 0)
+        {
+            Console.WriteLine("\nThere aren't factories yet. Please, add one!");
+            return;
+        }
+
+        Console.WriteLine("\nFactories list:");
+        foreach (var factory in _factories)
+        {
+            GetFactoryInfo(factory);
+        }
     }
 
+    private static void GetFactoryInfo(Factory factory)
+    {
+        Console.Write($"\t-ID: {factory.Id}\n\t\t-Electricity per plan (P): {factory.P}" +
+                      $"\n\t\t-Electricity in fact (F): {factory.F}" +
+                      $"\n\t\t-Deviation from the plan (O1): {Math.Round(factory.O1, 2)} kWt" +
+                      $"\n\t\t-Deviation in fact (O2): {Math.Round(factory.O2, 2)}");
+    }
     private static void CreateFactory()
     {
         Console.Write("\n1. Enter electricity capability use per plan: ");
