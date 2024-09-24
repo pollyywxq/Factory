@@ -34,9 +34,12 @@ public static class Program
                 case 3:
                     GetFactoryById();
                     break;
-                case 4:
+                case 5:
                     Console.WriteLine("\nGood bye!");
                     return;
+                case 6:
+                    Console.WriteLine("\nBonus. My congratulations! :)");
+                    break;
                 default:
                     Console.WriteLine("\nInvalid choice. Please, try again!");
                     break;
@@ -59,6 +62,23 @@ public static class Program
 
         GetFactoryInfo(factory);
         ;
+    }
+    private static void DeleteFactory()
+    {
+        Console.Write("\nEnter factory identifier: ");
+        var factoryIdentifier = Convert.ToInt32(Console.ReadLine());
+
+        var factory = _factories.FirstOrDefault(f => f.Id == factoryIdentifier);
+
+        if (factory is null)
+        {
+            Console.WriteLine("\nFactory not found! Please, try again!");
+            return;
+        }
+
+        _factories.Remove(factory);
+
+        Console.WriteLine("\nFactory has been successfully deleted from the factories list!");
     }
     private static void GetFactories()
     {
